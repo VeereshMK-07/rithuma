@@ -1,16 +1,60 @@
-# React + Vite
+# 🌸 Rithuma — Privacy-First Cycle Tracking App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Rithuma is a modern, privacy-first women's health tracking application designed with a local-first architecture, encrypted storage, and predictive insights.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 📅 Cycle tracking & phase detection
+- 🧠 Symptom logging & pattern analysis
+- 🔒 Client-side encryption (privacy-first)
+- 👤 Guest & authenticated user support
+- ☁️ Cloud sync-ready architecture
+- 📊 Insights engine (phase-based trends)
+- 📄 Export data as PDF (doctor-friendly)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧠 Architecture Highlights
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Local-first data model (no data loss)
+- Scoped storage (guest vs authenticated users)
+- Modular storage service abstraction
+- Encryption layer using CryptoJS
+- Migration-safe storage design
+- Sync-ready cloud integration layer
+
+---
+
+## 🛠 Tech Stack
+
+- React (Vite)
+- Tailwind CSS
+- LocalStorage + Encryption
+- Cloud Sync Layer (custom)
+- jsPDF
+
+---
+
+## 📌 Current Status
+
+✅ Phase 1 Complete (Core System + Sync Foundation)
+
+Next:
+- Full authentication system
+- Advanced sync conflict resolution
+- AI-based health insights
+- Reports & analytics
+
+---
+
+## 🧪 Future Vision
+
+Rithuma aims to become a smart, privacy-first health assistant with predictive analytics and clinical insights.
+
+---
+
+## ⚠️ Disclaimer
+
+This app is not a medical diagnosis tool. It is designed for awareness and tracking purposes only.
