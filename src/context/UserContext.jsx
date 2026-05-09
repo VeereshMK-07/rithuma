@@ -12,7 +12,9 @@ import { migrateGuestData } from "../utils/migrateGuestData";
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-  const [userType, setUserType] = useState("anonymous");
+  const [userType, setUserType] = useState(() => {
+    return localStorage.getItem("rithuma_user_type") || "anonymous";
+  });
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isGuest, setIsGuest] = useState(false);
@@ -32,8 +34,17 @@ export function UserProvider({ children }) {
 
         window.dispatchEvent(new Event("storage")); // trigger data refresh
       } else {
-        setUser(null);
-        setUserType("anonymous");
+        const savedType = localStorage.getItem("rithuma_user_type");
+
+        if (savedType === "guest") {
+          setUser(null);
+          setUserType("guest");
+          setIsGuest(true);
+        } else {
+          setUser(null);
+          setUserType("anonymous");
+          setIsGuest(false);
+        }
       }
 
       setIsLoading(false);
@@ -46,6 +57,8 @@ export function UserProvider({ children }) {
   async function login(email, password) {
     await signInWithEmailAndPassword(auth, email, password);
 
+    localStorage.removeItem("rithuma_user_type");
+
     // 🔥 clear guest data ONLY after login
     Object.keys(localStorage).forEach((key) => {
       if (key.includes("guest")) {
@@ -57,13 +70,17 @@ export function UserProvider({ children }) {
   async function signup(email, password) {
     await createUserWithEmailAndPassword(auth, email, password);
   }
-
   async function logout() {
     await signOut(auth);
+
+    localStorage.removeItem("rithuma_user_type");
+
     setIsGuest(false);
+    setUserType("anonymous");
   }
 
   function continueAsGuest() {
+    localStorage.setItem("rithuma_user_type", "guest"); // ✅ SAVE
     setUser(null);
     setUserType("guest");
     setIsGuest(true);

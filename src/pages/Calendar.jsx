@@ -74,6 +74,12 @@ export default function Calendar() {
     setSymptoms(stored);
   }, [user]);
 
+  useEffect(() => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    setSelectedDate(today);
+  }, []);
+
   if (!lastPeriodDate) {
     return (
       <div className="p-6 text-center text-gray-500">
