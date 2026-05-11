@@ -23,6 +23,27 @@ function getTrendInsights(phaseSymptoms) {
   };
 }
 
+function getPatternStrength(count) {
+  if (count >= 8) {
+    return {
+      label: "Strong",
+      color: "text-green-600",
+    };
+  }
+
+  if (count >= 4) {
+    return {
+      label: "Moderate",
+      color: "text-yellow-600",
+    };
+  }
+
+  return {
+    label: "Weak",
+    color: "text-gray-500",
+  };
+}
+
 export default function Insights() {
   const [insights, setInsights] = useState(null);
   const { user, userType } = useUser();
@@ -49,6 +70,14 @@ export default function Insights() {
 
   /* 🔥 Step 3B data */
   const trendData = getTrendInsights(phaseSymptoms);
+  const topSymptomCount = Object.values(phaseSymptoms).reduce(
+    (total, symptoms) => {
+      return total + (symptoms[topSymptom] || 0);
+    },
+    0,
+  );
+
+  const patternStrength = getPatternStrength(topSymptomCount);
 
   return (
     <div className="p-4 space-y-6">
@@ -87,6 +116,28 @@ export default function Insights() {
         </div>
       </div>
 
+      {/* 🧠 Smart Pattern Strength */}
+      {topSymptom && (
+        <div className="bg-white rounded-2xl p-4 shadow-sm space-y-2">
+          <h3 className="text-sm font-medium text-gray-600">
+            Pattern Confidence
+          </h3>
+
+          <p className="text-sm text-gray-700">
+            {topSymptom} appears frequently across your symptom logs.
+          </p>
+
+          <div className="flex items-center gap-3 mt-2">
+            <span className={`text-sm font-semibold ${patternStrength.color}`}>
+              {patternStrength.label}
+            </span>
+
+            <span className="text-xs text-gray-500">
+              based on recurring entries
+            </span>
+          </div>
+        </div>
+      )}
       {/* Phase Breakdown (NO NUMBERS — CLEAN UX) */}
       <div className="space-y-3">
         <h3 className="text-sm font-medium text-gray-600">Symptoms by Phase</h3>
