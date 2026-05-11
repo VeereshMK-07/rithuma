@@ -16,7 +16,10 @@ Rithuma is a modern, privacy-first women's health tracking application designed 
 
 ---
 
-## 📸 Screenshots
+## 📸 Screenshots 
+
+### Onboarding Flow
+![Onboarding](docs/screenshots/onboarding.png)
 
 ### Authentication Choice
 ![Auth Choice](docs/screenshots/auth-choice.png)
@@ -30,14 +33,12 @@ Rithuma is a modern, privacy-first women's health tracking application designed 
 ### Insights Engine
 ![Insights](docs/screenshots/insights.png)
 
-### Onboarding Flow
-![Onboarding](docs/screenshots/onboarding.png)
+### Profile & Privacy Controls
+![Profile](docs/screenshots/profile.png)
 
 ### PDF Export
 ![PDF Export](docs/screenshots/pdf-export.png)
 
-### Profile & Privacy Controls
-![Profile](docs/screenshots/profile.png)
 
 ## 🧠 Architecture Highlights
 
